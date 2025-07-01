@@ -1,7 +1,9 @@
-<?php 
+<?php
 session_start();
 include("connect.php");
+
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,19 +14,19 @@ include("connect.php");
 </head>
 <body>
     <div>
-        <p>
-            Hello <?php 
-            if(isset($_SESSION['email'])){
-                $email=$_SESSION['email'];
-                $querr=mysqli_query($conn, "SELECT users.* FROM `users` WHERE users.email='$email'")
-                while($row=mysqli_fetch_array($query)){
-                    echo $row['firstName'].''.$row['lastName'];
-                }
-            }
-            ?>
-            :)
-            <a href="logout.php">Logout</a>
-        </p>
+      <p>
+       Hello  <?php 
+       if(isset($_SESSION['email'])){
+        $email=$_SESSION['email'];
+        $query=mysqli_query($conn, "SELECT users.* FROM `users` WHERE users.email='$email'");
+        while($row=mysqli_fetch_array($query)){
+            echo $row['firstName'].' '.$row['lastName'];
+        }
+       }
+       ?>
+       :)
+      </p>
+      <a href="logout.php">Logout</a>
     </div>
 </body>
 </html>
